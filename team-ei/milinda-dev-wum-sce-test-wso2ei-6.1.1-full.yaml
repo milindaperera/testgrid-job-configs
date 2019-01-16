@@ -14,10 +14,23 @@ infrastructureConfig:
   - OracleJDK-8
   provisioners:
   - name: single-node-deployment
-    remoteRepository: "git@github.com:wso2-support/aws-ei.git"
-    remoteBranch: "6.4.0"
+    remoteRepository: "git@github.com:milindaperera/aws-ei.git"
+    remoteBranch: "6.4.0-dev"
     description: Provision Infra for running intg tests
     scripts:
+    - name: 'prod-wso2-ei-scenario-vfs-be-deployment'
+      description: ''
+      type: CLOUDFORMATION
+      file: integrator/Sample-Backends/vfs-be.yaml
+      inputParameters:
+        parseInfrastructureScript: false
+        KeyPairName: "deployment-prod"
+        CertificateName: "self-signed-cert"
+        FTPUserName: "wso2carbon"
+        FTPUserPassword: "DB_Password"
+        ProductVersion: "6.4.0"
+        ElasticSearchEndpoint: "https://search-testgrid-prod-hn2zfvehc7i2edigkxnfjljc6y.us-east-1.es.amazonaws.com"
+        InternalPrepareForTest: "True"
     - name: 'prod-wso2-ei-scenario-deployment'
       description: ''
       type: CLOUDFORMATION
