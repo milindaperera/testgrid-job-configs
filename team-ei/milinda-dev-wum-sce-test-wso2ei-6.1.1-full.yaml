@@ -26,6 +26,7 @@ infrastructureConfig:
         parseInfrastructureScript: false
         KeyPairName: "deployment-prod"
         CertificateName: "self-signed-cert"
+        AMI: "ami-01b72d1b13ca0b4bc"
         FTPUserName: "wso2carbon"
         FTPUserPassword: "DB_Password"
         ProductVersion: "6.1.1"
